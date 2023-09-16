@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+/* Optional: Makes the sample page fill the window. */
+html, body {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+/*製作固定式背景圖片*/
+body {
+	background-size: cover;			/*盡可能覆蓋背景*/
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;	/*讓圖片看起來會隨著滑鼠滾動*/
+}
+
+footer {
+	position: relative;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin-bottom: 0px;
+
+}
+
+table {
+	width: 100%;
+}
+
+table, th, td {
+	padding: 20px;
+	border-collapse: collapse;
+	border: 1px red dotted;
+}
+
+th {
+	text-align: center;
+}
+
+/*修改Bootstrap所提供tooltip的外框顏色*/
+.tooltip-inner {
+	background-color: #3f8a2f;
+}
+
+/*修改Bootstrap所提供tooltip的外框箭頭顏色*/
+.tooltip > .arrow::before {
+	border-bottom-color: #3f8a2f;
+}
+
+/*
+ *讓表格中一些重要性較低的欄位在小型裝置上不顯示
+ *lg-hidden隱藏級別最高，必須到筆電大小才顯示
+ *md-hidden隱藏級別次之，到大型移動裝置才顯示
+ *sm-hidden依此類推……
+ */
+@media (min-width: 320px) {
+}
+
+@media (max-width: 320px) {
+	.admin {
+		width: 80px;
+	}
+}
+
+@media (min-width: 375px) {
+}
+
+@media (max-width: 375px) {
+	.sm-hidden {
+		display: none;
+	}
+}
+
+@media (min-width: 425px) {
+	.carousel-item img {
+		height: 500px;
+	}
+}
+
+@media (max-width: 425px) {
+	.carousel-item img {
+		height: 400px;
+	}
+	.md-hidden {
+		display: none;
+	}
+	.gm-style-iw-d img {
+		width: 100%;
+	}
+}
+
+@media (min-width: 768px) {
+	/*使用大於平板的設備時，模態框可以完全展開*/
+	#login {
+		height: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	/*使用小於平板的設備時，模態框穎減掉高度給手機或平板鍵盤保留位置*/
+	#login {
+		height: 50%;
+	}
+	.lg-hidden {
+		display: none;
+	}
+	.page-item {
+		width: 21px;
+		font-size: 7px;
+		margin-top: -10px;
+	}
+	.page-link {
+		padding: 0.3rem
+	}
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (max-width: 1024px) {
+}

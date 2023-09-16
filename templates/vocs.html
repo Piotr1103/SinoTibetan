@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load tags %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block main %}
+	<p class="mt-5" style="font-weight: bold;">共查詢到{{nums}}條詞條：</font></p>
+	<table>
+		<thead>
+			<th></th>
+			<th>藏文</th>
+			<th>漢語</th>
+			<th>品詞</th>
+			<th>藏文轉寫</th>
+			<th>實際發音</th>
+			<th width="20%">釋義</th>
+		</thead>
+		<tbody>
+			{% for i in vocs %}
+				<!--{% bodhan 'danger' 'primary' i.bod i.han i.pronunciation i.explanation i.create_time %}-->
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td><font size="20px">{{i.bod}}</font></td>
+					<td>{{i.han}}</td>
+					<td align="center">{{i.category}}</td>
+					<td>{{i.transliteration}}</td>
+					<td>{{i.pronunciation}}</td>
+					<td>{{i.explanation|safe}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,104 @@
+<!-- C:\Users\MyPC\AppData\Local\Programs\Python\Python310\Lib\site-packages\django\contrib\admin\templates\admin -->
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block extrastyle %}
+	{{block.super}}
+	<style type="text/css">
+		/*	搜尋詞庫中是否已存在該詞彙	*/
+		.list-group {
+			background-color: white;
+			display: block;
+			list-style-type: none;
+			margin: 0 0 0 0;
+			padding: 0;
+			max-width: 600px;
+		}
+
+		.list-group > li {
+			border-color: gray;
+			border-image: none;
+			border-style: solid solid none;
+			border-width: 1px 1px 0;
+			padding-left: 5px;
+			padding-bottom: 15px;
+		}
+
+		.list-group > li:last-child {
+		  border-bottom: 1px solid gray;
+		}
+
+		.bod {
+			display: inline-block;
+			width: 40%;
+		}
+
+		.bod a {
+			font-size: 30px;
+		}
+
+		.han {
+			font-size: 20px;
+			width: 60%;
+		}
+
+		#id_bod {
+			font-size: 30px;
+			height: 160px;
+		}
+
+		#id_bod:focus + .list-group {
+		  display: block; 
+		}
+
+		@media (max-width: 320px) {
+			.list-group > li span{
+				font-size: 15px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.list-group > li span{
+				font-size: 15px;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block sidebar %}
+	{{block.super}}
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap.min.css' %}"> -->
+	<script src="{% static 'plugins/jquery-3.3.1.min.js' %}"></script>
+	<!-- <script src="{% static 'plugins/bootstrap.bundle.min.js' %}"></script> -->
+	<script src="{% static 'js/keyboard.js' %}"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.module').append('<div class="form-row"><div id="panel" align="center" style="margin:10px 10px 10px 10px;"></div></div>')
+			$('#panel').append('<a class="button" id="addLink" style="background-color:#07942b;margin:0px 0px 0px 5px;line-height:15px;height:35px;padding:10px 15px;">超連結</a>')
+			$('#panel').append('<a class="button" id="addFont" style="background-color:#ff0000;margin:0px 0px 0px 5px;line-height:15px;height:35px;padding:10px 15px;">字體</a>')
+
+			$('#addLink').click(function(){
+				addCircum('a',' style="font-size:25px"',' href="/bod/?word=')
+			})
+
+			$('#addFont').click(function(){
+				addCircum('font',' color="red" size="25px"')
+			})
+		})
+
+		$('#id_bod').on('keyup', function(e){
+			$b = $(e.target).val()
+			$('ul.list-group').remove()
+			$.get('/bod/search/'+$b, function(f){
+				var nf = Array.from(f)
+				var ul = '<ul class="list-group"></ul>'
+
+				$(ul).appendTo('.field-bod')
+
+				nf.forEach(function(word){
+					$('<li class="list-group-item" ng-repeat="item in list track by $index"><span class="bod"><a href="/bod/?word='+word.bod+'" target="_blank">'+word.bod+'</a></span>&emsp;<span class="han">'+word.han+'</span></li>').appendTo('ul.list-group')
+				})
+			})
+		})
+	</script>
+{% endblock %}

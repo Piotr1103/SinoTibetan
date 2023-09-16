@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load tags %}
+
+{% block title %}
+	藏漢在線詞典
+{% endblock %}
+
+{% block relsrc %}
+	<style type="text/css">
+		/*	搜尋詞庫中是否已存在該詞彙	*/
+		.list-group {
+			background-color: white;
+			display: block;
+			list-style-type: none;
+			margin-top: 10px;
+			margin-left: 0px;
+			padding: 0;
+			max-width: 600px;
+		}
+
+		.list-group > li {
+			border-color: gray;
+			border-image: none;
+			border-style: solid solid none;
+			border-width: 1px 1px 0;
+			padding-left: 5px;
+			padding-bottom: 15px;
+		}
+
+		.list-group > li:last-child {
+		  border-bottom: 1px solid gray;
+		}
+
+		.bod {
+			display: inline-block;
+			width: 40%;
+		}
+
+		.bod a {
+			font-size: 30px;
+		}
+
+		.han {
+			font-size: 20px;
+			width: 60%;
+		}
+
+		#id_bod:focus + .list-group {
+		  display: block; 
+		}
+
+		@media (max-width: 320px) {
+			.list-group > li span{
+				font-size: 15px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.list-group > li span{
+				font-size: 15px;
+			}
+		}
+	</style>
+{% endblock %}
+
+{% block main %}
+	<div class="container mt-5">
+		<div class="row">
+			<article class="col-md-10 mt-5">
+				<form action="/bod/" method="get">
+					{% csrf_token %}
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-auto">
+								<label class="sr-only" for="word">輸入要查詢的詞彙：</label>
+								<input type="text" name="word" class="form-control" id="word" placeholder="輸入藏文或漢文單詞">
+							</div>
+							<button type="submit" class="btn btn-primary">查詢</button>
+						</div>
+						<div class="form-check form-check-inline mt-3 mb-4 ml-0">
+							<label class="form-check-label" for="greedy">模糊查詢，字串在：</label>
+						</div>
+						<div class="form-check form-check-inline mt-3 mb-4 mr-3">
+							<input type="checkbox" name="greedy" class="form-check-input" id="head" value="head">
+							<label class="form-check-label" for="head">詞頭</label>
+						</div>
+						<div class="form-check form-check-inline mt-3 mb-4 mr-3">
+							<input type="checkbox" name="greedy" class="form-check-input" id="tail" value="tail">
+							<label class="form-check-label" for="tail">詞尾</label>
+						</div>
+						<div class="form-check form-check-inline mt-3 mb-4 mr-3">
+							<input type="checkbox" name="greedy" class="form-check-input" id="body" value="contains">
+							<label class="form-check-label" for="contains">任意</label>
+						</div>
+					</div>
+				</form>
+				<div id="search"></div>
+			</article>
+
+			<aside class="col-md-2 mt-5">
+				<!-- 測蘭廣告示例 -->
+				<div class="ws-sidebar-1">
+					<div id="media_image-22" class="et_pb_widget widget_media_image">
+						<a href="/google-adwords?camplink=FreeStuff&amp;campname=Grader&amp;cid=Web_Any_Banner_AdWords_MeasureUp_PerfGrader">
+							<img width="980" height="1416" src="https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader.png.webp" class="image wp-image-51065  attachment-full size-full" alt="wordstream google ads performance grader" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader.png.webp 980w, https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader-208x300.png.webp 208w, https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader-709x1024.png.webp 709w, https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader-768x1110.png.webp 768w" sizes="(max-width: 980px) 100vw, 980px">
+						</a>
+					</div>
+					<div class="ws-card-v4">
+						<h4 class="ws-text-v7 text-white">Sign up for our weekly newsletter!</h4>
+						<div class="ws-form-v2">
+							<script defer="" src="//marketing.wordstream.com/js/forms2/js/forms2.min.js"></script>
+							<div id="media_image-23" class="et_pb_widget widget_media_image">
+								<a href="/google-adwords?camplink=FreeStuff&amp;campname=Grader&amp;cid=Web_Any_Banner_AdWords_MeasureUp_PerfGrader">
+									<img width="980" height="1416" src="https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader.png.webp" class="image wp-image-51065  attachment-full size-full" alt="wordstream google ads performance grader" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader.png.webp 980w, https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader-208x300.png.webp 208w, https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader-709x1024.png.webp 709w, https://www.wordstream.com/wp-content/uploads/2021/12/ws-sidebar-offer-google-ads-performance-grader-768x1110.png.webp 768w" sizes="(max-width: 980px) 100vw, 980px">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript">
+		$('#word').on('input', function(e){
+			$b = $(e.target).val()
+			$('ul.list-group').remove()
+			$.get('/bod/search/'+$b, function(f){
+				var nf = Array.from(f)
+				var ul = '<div class="col-auto"><ul class="list-group"></ul></div>'
+
+				$(ul).appendTo('#search')
+
+				nf.forEach(function(word){
+					$('<li class="list-group-item" ng-repeat="item in list track by $index"><span class="bod"><a href="/bod/?word='+word.bod+'" target="_blank">'+word.bod+'</a></span>&emsp;<span class="han">'+word.han+'</span></li>').appendTo('ul.list-group')
+				})
+			})
+		})
+	</script>
+{% endblock %}
