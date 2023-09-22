@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'SinoTibetan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'word',
+        'NAME': 'SinoTibetanDict',
         'USER': 'irtckdxc',
         'PASSWORD': 'GFUOTc6Bk0gZm5THT5E_K5H29pnNb5Ee',
         'HOST': 'peanut.db.elephantsql.com',
