@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'words',
         'USER': 'irtckdxc',
         'PASSWORD': 'GFUOTc6Bk0gZm5THT5E_K5H29pnNb5Ee',
-        'HOST': 'postgres://irtckdxc:GFUOTc6Bk0gZm5THT5E_K5H29pnNb5Ee@peanut.db.elephantsql.com/irtckdxc',
+        'HOST': 'peanut.db.elephantsql.com/words',
     }
 }
 
