@@ -78,12 +78,13 @@ WSGI_APPLICATION = 'SinoTibetan.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'word': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'words',
         'USER': 'irtckdxc',
         'PASSWORD': 'GFUOTc6Bk0gZm5THT5E_K5H29pnNb5Ee',
-        'HOST': 'peanut.db.elephantsql.com/words',
+        'HOST': 'peanut.db.elephantsql.com',
+        'PORT': '5432',
     }
 }
 
