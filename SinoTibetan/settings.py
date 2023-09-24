@@ -130,12 +130,12 @@ STATIC_URL = '/statics/'
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'static'),
     ('css', os.path.join(STATIC_URL, 'css')),
     ('js', os.path.join(STATIC_URL, 'js')),
     ('plugins', os.path.join(STATIC_URL, 'plugins')),
 ]
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'staticfiles')
 
-MEDIA_ROOT =  os.path.join(PROJECT_ROOT, 'media')
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
