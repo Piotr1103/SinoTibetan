@@ -131,9 +131,9 @@ STATIC_URL = '/statics/'
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
-    ('css', os.path.join(PROJECT_ROOT, 'css')),
-    ('js', os.path.join(PROJECT_ROOT, 'js')),
-    ('plugins', os.path.join(PROJECT_ROOT, 'plugins')),
+    ('css', os.path.join(STATIC_URL, 'css')),
+    ('js', os.path.join(STATIC_URL, 'js')),
+    ('plugins', os.path.join(STATIC_URL, 'plugins')),
 ]
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
