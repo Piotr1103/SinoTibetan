@@ -127,9 +127,9 @@ USE_TZ = True
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/statics/'
 STATICFILES_DIRS = [
-    ('css', os.path.dirname(os.path.abspath(os.path.join(STATIC_URL, 'css')))),
-    ('js', os.path.dirname(os.path.abspath(os.path.join(STATIC_URL, 'js')))),
-    ('plugins', os.path.dirname(os.path.abspath(os.path.join(STATIC_URL, 'plugins')))),
+    ('css', os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(STATIC_URL, 'css'))))),
+    ('js', os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(STATIC_URL, 'js'))))),
+    ('plugins', os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(STATIC_URL, 'plugins'))))),
 ]
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
