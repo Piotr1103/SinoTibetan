@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     ('css', os.path.join(STATIC_URL, 'css')),
     ('js', os.path.join(STATIC_URL, 'js')),
-    ('plugins', os.path.join(STATIC_URL, 'plugins'))
+    ('plugins', os.path.join(STATIC_URL, 'plugins')),
 ]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
