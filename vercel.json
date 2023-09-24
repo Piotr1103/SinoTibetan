@@ -17,12 +17,11 @@
   "routes": [
     {
       "src": "/statics/(.*)",
-      "dest": "/statics/$1"
+      "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
       "dest": "SinoTibetan/wsgi.py"
     }
   ],
-  "outputDirectory": "staticfiles_build"
 }
