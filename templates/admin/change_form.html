@@ -1,6 +1,5 @@
 <!-- C:\Users\MyPC\AppData\Local\Programs\Python\Python310\Lib\site-packages\django\contrib\admin\templates\admin -->
 {% extends "admin/change_form.html" %}
-{% load static %}
 
 {% block extrastyle %}
 	{{block.super}}
@@ -68,9 +67,9 @@
 {% block sidebar %}
 	{{block.super}}
 	<!-- <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap.min.css' %}"> -->
-	<script src="{% static 'plugins/jquery-3.3.1.min.js' %}"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<!-- <script src="{% static 'plugins/bootstrap.bundle.min.js' %}"></script> -->
-	<script src="{% static 'js/keyboard.js' %}"></script>
+	<script src="statics/js/keyboard.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('.module').append('<div class="form-row"><div id="panel" align="center" style="margin:10px 10px 10px 10px;"></div></div>')
